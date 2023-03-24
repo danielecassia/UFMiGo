@@ -19,19 +19,19 @@
 <details>
 <summary> Contabilização de faltas </summary>
 
-Como usuário adicionar faltas a uma turma que cadastrei e ter acesso a quantidade de faltas que ainda posso ter
+> Como usuário adicionar faltas a uma turma que cadastrei e ter acesso a quantidade de faltas que ainda posso ter
 </details>
 
 <details>
 <summary> Busca automática por salas e horários </summary>
 
-Como usuário quero ter acesso a sala que será ministrada as aulas de cada turma
+> Como usuário quero ter acesso a sala que será ministrada as aulas de cada turma
 </details>
 
 <details>
 <summary> Cardapio do dia do bandeijão </summary>
 
-Como usuário quero ter acesso ao cardápio diário do Restaurane Universitário
+> Como usuário quero ter acesso ao cardápio diário do Restaurane Universitário
 </details>
 
 ## Membros da equipe e papeis
