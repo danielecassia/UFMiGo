@@ -1,8 +1,8 @@
 # UFMiGo
 
-Objetivo: Facilitar a vida dos universitários, mediante o acesso simplificado às informações relevantes.
+### Objetivo: Facilitar a vida dos universitários, mediante o acesso simplificado às informações relevantes.
 
-Principais Features:
+## Principais Features:
 
 <details>
 <summary> login/cadastro de usuario </summary>
@@ -34,13 +34,13 @@ Como usuário quero ter acesso a sala que será ministrada as aulas de cada turm
 Como usuário quero ter acesso ao cardápio diário do Restaurane Universitário
 </details>
 
-Membros da equipe e papeis:
+## Membros da equipe e papeis:
 - Alan, frontend
 - Daniele, frontend
 - Emyle, backend
 - Milla, backend
 
-Tecnologias: 
+## Tecnologias: 
 - React JS
 - Node JS
 - MUI
