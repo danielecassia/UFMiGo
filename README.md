@@ -1,48 +1,48 @@
 # UFMiGo
 
-### Objetivo: Facilitar a vida dos universitários, mediante o acesso simplificado às informações relevantes.
+### Objetivo: Facilitar a vida dos universitários, mediante o acesso simplificado a informações relevantes da rotina acadêmica.
 
-## Principais Features
+## Principais funcionalidades
 
 <details>
-<summary> login/cadastro de usuario </summary>
+<summary>Cadastro/acesso de usuário </summary>
 
-> Como usuário eu quero poder me cadastrar no sistema para ter acesso a funcionalidades que necessitam de autentificação
+> Como usuário, quero poder me cadastrar no sistema para ter acesso a funcionalidades que necessitam de autenticação.
 </details>
 
 <details>
-<summary> Cadastro de turmas </summary>
+<summary>Cadastro de turmas </summary>
 
-> Como usuário quero poder cadastrar minhas turmas para consultar os horários e contabilizar minhas faltas
+> Como usuário, desejo poder cadastrar minhas turmas, a fim de consultar meus horários, salas e número de faltas.
 </details>
 
 <details>
-<summary> Contabilização de faltas </summary>
+<summary>Contabilização de faltas </summary>
 
-> Como usuário adicionar faltas a uma turma que cadastrei e ter acesso a quantidade de faltas que ainda posso ter
+> Como usuário, quero adicionar faltas a uma turma que cadastrei e ter acesso à quantidade de faltas que ainda posso ter.
 </details>
 
 <details>
-<summary> Busca automática por salas e horários </summary>
+<summary>Busca automática por salas e horários </summary>
 
-> Como usuário quero ter acesso a sala que será ministrada as aulas de cada turma
+> Como usuário, quero encontrar de forma automatizada o número da sala na qual serão ministradas as aulas de cada turma.
 </details>
 
 <details>
-<summary> Cardapio do dia do bandeijão </summary>
+<summary>Cardápio dos restaurantes universitários</summary>
 
-> Como usuário quero ter acesso ao cardápio diário do Restaurane Universitário
+> Como usuário, quero ter acesso ao cardápio diário dos Restauranes Universitários.
 </details>
 
-## Membros da equipe e papeis
-- Alan, frontend
-- Daniele, frontend
-- Emyle, backend
-- Milla, backend
+## Membros da equipe e papéis
+- Alan, front-end
+- Daniele, front-end
+- Emyle, back-end
+- Milla, back-end
 
 ## Tecnologias
-- React JS
-- Node JS
+- React
+- Node.js
 - MUI
-- Java Script
+- JavaScript
 - MongoDB
