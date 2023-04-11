@@ -60,8 +60,7 @@
 - Intalar o MUI (Alan)
 - Criar protótipo (Alan e Daniele)
 
-<details>
-<summary>Backlog do Sprint </summary>
+## Backlog do Sprint
 
 <details>
 <summary>História 3: Como usuário, desejo poder cadastrar minhas turmas </summary>
@@ -104,6 +103,4 @@
 > tela de acesso de faltas (Alan) <br />
 > pegar dados do back (Alan) <br />
 > calcular o máximo de faltas que cada matéria poderá ter. (Milla)
-</details>
-
 </details>
