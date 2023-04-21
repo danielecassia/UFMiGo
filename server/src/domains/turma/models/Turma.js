@@ -2,9 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//import { Schema, model } from 'mongoose';
-
-const Turma = new Schema({
+const turmaSchema = new Schema({
     nome: String,
     codigo: String,
     turma: String,
@@ -16,4 +14,6 @@ const Turma = new Schema({
     }
 });
 
-mongoose.model("turmas", Turma);
+const Turma = mongoose.model("turmas", turmaSchema);
+
+module.exports.Turma = Turma;
