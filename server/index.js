@@ -1,13 +1,16 @@
 const express = require('express')
 const app = express();
+const turmas = require("./src/domains/turma/controllers/index")
 
 // Configurações
 
 
 // Rotas
     app.get('/', function (req, res) {
-        res.send('Página principal')
+        res.send('Página Principal')
     });
+
+    app.use('/turmas', turmas);
 
 
 // Outros
