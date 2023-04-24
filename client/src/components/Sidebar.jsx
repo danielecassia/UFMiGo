@@ -5,7 +5,9 @@ import BookIcon from "@mui/icons-material/MenuBookRounded";
 import ContractIcon from '@mui/icons-material/ReceiptLongRounded';
 import PersonIcon from '@mui/icons-material/PersonRounded';
 
-import logo from "./../assets/logo.jpg"
+import "./Sidebar.css"
+
+import logo from "./../assets/logo.png"
 
 function Sidebar() {
     return (
@@ -25,7 +27,7 @@ function Sidebar() {
                         <Link to="/courses">
                             <div className="item">
                                 <BookIcon />
-                                <span>Matérias</span>
+                                <span>Disciplinas</span>
                             </div>  
                         </Link>
                     </li>
