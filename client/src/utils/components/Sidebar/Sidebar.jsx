@@ -7,7 +7,7 @@ import PersonIcon from '@mui/icons-material/PersonRounded';
 
 import "./Sidebar.css"
 
-import logo from "./../assets/logo.png"
+import logo from "../../../assets/logo.png"
 
 function Sidebar() {
     return (

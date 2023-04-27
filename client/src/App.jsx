@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import Courses from "./pages/Courses";
+import Layout from "./utils/components/Layout";
+import Home from "./views/Home/Home";
+import Courses from "./views/Courses/Courses";
 import "./App.css"
 
 export default function App() {
