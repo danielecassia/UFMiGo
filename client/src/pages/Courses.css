@@ -1,5 +1,30 @@
 .outlet .main-table {
     background-color: whitesmoke;
     padding: 30px;
-    border-radius: 25px;
+    border-radius: 15px;
+}
+.outlet h2 {
+    color: #203749;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.add-course {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    align-items: center;
+    color: #C8102E;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+    width: 215px;
+}
+
+.add-course p {
+    margin-left: 5px;
+}
+
+.add-course:hover {
+  text-shadow: 2px 2px 10px #00000033;
 }

@@ -15,6 +15,16 @@ import { randomId } from '@mui/x-data-grid-generator';
 
 import "./Courses.css"
 
+export function CustomFooter(props) {
+    return (
+        <div className="add-course" onClick={() => void 0}>
+            <AddIcon />
+            <p>Adicionar disciplina</p>
+        </div>  
+    );
+};
+
+
 const initialRows = [
     {
         id: randomId(),
@@ -114,18 +124,6 @@ export default function Courses() {
         );
     };
 
-    const handleCancelClick = (id) => () => {
-        setRowModesModel({
-            ...rowModesModel,
-            [id]: { mode: GridRowModes.View, ignoreModifications: true },
-        });
-
-        const editedRow = rows.find((row) => row.id === id);
-        if (editedRow.isNew) {
-            setRows(rows.filter((row) => row.id !== id));
-        }
-    };
-
     const processRowUpdate = (newRow) => {
         const updatedRow = { ...newRow, isNew: false };
         setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
@@ -141,13 +139,15 @@ export default function Courses() {
             field: 'code',
             headerName: 'Código',
             width: 150,
-            editable: false
+            editable: false,
+            headerClassName: 'courses-table--header'
         },
         {
             field: 'course',
             headerName: 'Disciplina',
             width: 350,
-            editable: false
+            editable: false,
+            headerClassName: 'courses-table--header'
         },
         {
             field: 'increase',
@@ -155,6 +155,7 @@ export default function Courses() {
             type: 'actions',
             width: 50,
             cellClassName: 'actions',
+            headerClassName: 'courses-table--header',
             getActions: ({ id }) => {
                 return [
                     <GridActionsCellItem
@@ -170,8 +171,9 @@ export default function Courses() {
             field: 'absences',
             headerName: 'Faltas',
             type: 'number',
-            width: 60,
-            editable: true
+            width: 65,
+            editable: true,
+            headerClassName: 'courses-table--header'
         },
         {
             field: 'decrease',
@@ -179,6 +181,7 @@ export default function Courses() {
             type: 'actions',
             width: 50,
             cellClassName: 'actions',
+            headerClassName: 'courses-table--header',
             getActions: ({ id }) => {
                 return [
                     <GridActionsCellItem
@@ -196,6 +199,7 @@ export default function Courses() {
             headerName: 'Excluir',
             width: 150,
             cellClassName: 'actions',
+            headerClassName: 'courses-table--header',
             getActions: ({ id }) => {
                 return [
                     <GridActionsCellItem
@@ -211,44 +215,45 @@ export default function Courses() {
 
     return (
         <div className="outlet">
-        <div classname="table">
-        <h2>Disciplinas</h2>
-        <div className="main-table">
-        <Box
-        sx={{
-            height: 500,
-                width: '100%',
-                '& .actions': {
-                    color: 'text.secondary',
-                },
-                '& .textPrimary': {
-                    color: 'text.primary',
-                },
-        }}
-        >
-        <DataGridPro
-        rows={rows}
-        columns={columns}
-        editMode="row"
-        rowModesModel={rowModesModel}
-        onRowModesModelChange={handleRowModesModelChange}
-        onRowEditStart={handleRowEditStart}
-        onRowEditStop={handleRowEditStop}
-        processRowUpdate={processRowUpdate}
-        hideFooterRowCount="True"
-        sx={{
-            fontSize: '16px'
-        }}
-        // slots={{
-            //   toolbar: EditToolbar,
-                // }}
-        // slotProps={{
-            //  toolbar: { setRows, setRowModesModel },
-                // }}
-        />
-        </Box>
-        </div>
-        </div>
+            <div classname="table">
+                <h2>Disciplinas</h2>
+                <div className="main-table">
+                    <Box
+                        sx={{
+                            height: 500,
+                            width: '100%',
+                            '& .actions': { color: 'text.secondary', },
+                            '& .textPrimary': { color: 'text.primary', },
+                            '& .courses-table--header': {
+                                color: '#C8102E',
+                                fontSize: '18px'
+                            },
+                        }}
+                    >
+                        <DataGridPro
+                            rows={rows}
+                            columns={columns}
+                            editMode="row"
+                            rowModesModel={rowModesModel}
+                            onRowModesModelChange={handleRowModesModelChange}
+                            onRowEditStart={handleRowEditStart}
+                            onRowEditStop={handleRowEditStop}
+                            processRowUpdate={processRowUpdate}
+                            hideFooterRowCount="True"
+                            sx={{
+                                fontSize: '16px',
+                            }}
+                            slots={{
+                                footer: CustomFooter
+                            }}
+                                    // }}
+                            // slotProps={{
+                                //  toolbar: { setRows, setRowModesModel },
+                                    // }}
+                        />
+                    </Box>
+                </div>
+            </div>
         </div>
     );
 }
