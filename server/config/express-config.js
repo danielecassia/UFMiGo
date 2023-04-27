@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 
-const turmaRouter = require('../src/domains/turma/controllers/index.js');
+const turmaRouter = require('../src/domains/turma/controllers/index');
+const userRouter = require('../src/domains/usuario/controllers/index');
 
-app.use('/', turmaRouter);
-app.use('/turmas', turmaRouter);
-app.use('/turmas/cadastrar', turmaRouter);
-app.use('/turmas/nova', turmaRouter);
-
+app.use('/', userRouter);
+app.use('/turmas', userRouter);
+app.use('/turmas/cadastrar', userRouter);
+app.use('/turmas/nova', userRouter);
 
 const PORT = 3000;
 app.listen(PORT, console.log("Server is running on port 3000"));
