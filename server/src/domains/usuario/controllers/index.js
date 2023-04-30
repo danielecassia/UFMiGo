@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 // Rota para tela que listará todas as turmas do usuário
 router.get('/turmas', (req, res) => {
     usuario.getTurmas().then(turmas => {
-        res.send("Lista de turmas do usuario: <br>"+turmas);
+        res.send(turmas);
     }).catch((err) => {
         res.send(err)
     });

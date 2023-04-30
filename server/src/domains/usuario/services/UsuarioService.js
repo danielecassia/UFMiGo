@@ -2,6 +2,7 @@
 const Turma = require('../../turma/models/Turma').Turma;
 const Usuario = require('../models/Usuario').Usuario;
 
+// Função que adiciona uma turma à lista de turmas do Usuario
 async function addTurma( turmaDados ) {
     // Verifica se turma existe na coleção de Turmas
         var novaTurma = await Turma.findOne({ 
@@ -48,6 +49,7 @@ async function addTurma( turmaDados ) {
         });
 };
 
+// Função que retorma uma Lista de turmas cadastradas pelo usuário
 async function getTurmas() {
     const usuario = await Usuario.findOne({ nome: "Usuário Padrão" }).exec();
 
