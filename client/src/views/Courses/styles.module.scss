@@ -34,3 +34,23 @@
     flex-direction: column;
   }
 }
+.faltasGroup {
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.divButtomHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding-right: 10px;
+}
