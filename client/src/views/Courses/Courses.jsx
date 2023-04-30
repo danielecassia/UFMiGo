@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Box from '@mui/material/Box';
 import {
-    Button, Stack
+  Button, Stack
 } from '@mui/material';
 import {StyledDataGrid} from '../../utils/components/StyledDataGrid/StyledDataGrid';
 import { InfoButton } from '../../utils/components/Buttons/InfoButton';
@@ -42,20 +41,20 @@ const rows = [
 ];
 
 export function Courses() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div>
         <Stack
-            direction="row"
-            justifyContent="flex-end"
-            alignItems="center"
-            sx={{ marginBottom: 2 }}
+          direction="row"
+          justifyContent="flex-end"
+          alignItems="center"
+          sx={{ marginBottom: 2 }}
         >
-            <Button
-                variant="contained"
-                sx={{ paddingLeft: 10, paddingRight: 10, bgcolor: 'secondary.main'}}
-                onClick={() => navigate('./courseRegister')}
-            >Cadastrar Matéria</Button>
+          <Button
+            variant="contained"
+            sx={{ paddingLeft: 10, paddingRight: 10, bgcolor: 'secondary.main'}}
+            onClick={() => navigate('./courseRegister')}
+          >Cadastrar Matéria</Button>
         </Stack>
         <div sx={{ height: 400}}>
             <StyledDataGrid

@@ -1,0 +1,45 @@
+.formSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .sectionTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    font: 1rem 'Inter';
+    color: 'palette.secondary.main';
+
+    hr {
+      width: 100%;
+      height: 0px;
+      border-width: 1px 0 0 0;
+      border-color: var(--app-gray2);
+    }
+  }
+
+  .sectionContent {
+    padding: 0 10%;
+
+    @media (max-width: 769px) {
+      padding: 0;
+    }
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .sectionTitleSpan {
+    white-space: nowrap;
+  }
+
+  .xButton {
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
