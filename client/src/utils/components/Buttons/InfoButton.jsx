@@ -7,7 +7,6 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 export function InfoButton({ params }) {
   const navigate = useNavigate();
   const { palette } = useTheme();
-  console.log(params);
   return (
     <div
       className={styles.info_container}
