@@ -79,7 +79,7 @@ const {palette}= useTheme();
                             />
                             <TextField
                                 id="standard-required"
-                                label="Número de Faltas"
+                                label="Total de Faltas"
                                 defaultValue="4"
                                 variant="standard"
                                 sx={{label: {color:palette.primary.main} }}
@@ -89,6 +89,14 @@ const {palette}= useTheme();
                         <br/><br/>
                         <FormSection title="Gerenciar Faltas">
                             <div className={styles.faltasGroup}>
+                                <TextField
+                                    id="standard-required"
+                                    label="Número de Faltas"
+                                    defaultValue="0"
+                                    type='number'
+                                    variant="standard"
+                                    sx={{label: {color:palette.primary.main} }}
+                                />
                                 <Button variant="outlined" color="secondary"
                                     onClick={() => alert("EXCLUIR FALTAS")}
                                     startIcon={
