@@ -1,9 +1,9 @@
 import react from 'react';
 
-export function Home() {
+export function Menu() {
     return (
         <div className="outlet">
-            <h1>OIIII 2</h1>
+            <h1>Menu</h1>
         </div>
     );
 }

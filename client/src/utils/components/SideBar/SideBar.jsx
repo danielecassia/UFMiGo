@@ -37,6 +37,7 @@ export function SideBar() {
       sx={{
         display: "flex",
         height: "100vh",
+        width:1,
       }}
     >
       <AppBar
@@ -103,11 +104,9 @@ export function SideBar() {
         <MuiDrawer
           variant="permanent"
           sx={{
-            display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth
-            },
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            backgroundColor: 'black',
           }}
           open
         >
@@ -118,9 +117,11 @@ export function SideBar() {
       <Box
         component="main"
         sx={{
-          flexGrow: 1,
+          // flexGrow: 1,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          height: "92%",
+          minHeight: "92%",
+          // bgcolor:'red',
+          width:1,
           marginTop: 6,
           paddingY: 2
         }}

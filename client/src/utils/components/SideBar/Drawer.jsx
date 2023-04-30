@@ -51,7 +51,6 @@ export function Drawer() {
 
       </Box>
       <List>
-        
         {navbarData
           .filter(({ roles }) => roles.includes(currentUser.role))
           .map(({ path, title, Icon }, index) => (
@@ -59,25 +58,11 @@ export function Drawer() {
             <ListItem
               key={index}
               onClick={() => navigate(path)}
-              onMouseEnter={() => {
-                setHover(true);
-              }}
-              onMouseLeave={() => {
-                setHover(false);
-              }}
-              // sx={{
-              //   color: hover ? 'primary.main' : 'primary.light',
-              //   width: 1,
-              //   "&:hover": {
-              //     backgroundColor: "primary.light",
-              //   },
-              //   fontSize: 30}}
             >
               <ListItemButton>
                 <ListItemIcon>
                   <Icon 
                    sx={{
-                    // color: hover ? 'primary.main' : 'primary.light',
                     color: 'primary.light',
                     borderRadius: 2,
                     fontSize: 30}}
@@ -86,7 +71,6 @@ export function Drawer() {
                 <ListItemText>
                   <Typography 
                     sx={{
-                      // color: hover ? 'primary.main' : 'primary.light',
                       color: 'primary.light',
                     }}>
                     {title}
@@ -96,7 +80,6 @@ export function Drawer() {
               </ListItemButton>
             </ListItem>
           ))}
-
       </List>
     </Container>
   );

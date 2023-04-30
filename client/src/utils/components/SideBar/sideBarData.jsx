@@ -1,6 +1,6 @@
 
 import {
-  Build as BuildIcon,
+  LocalDining as LocalDiningIcon,
   Description as DescriptionIcon,
   Person as PersonIcon
 } from "@mui/icons-material";
@@ -21,9 +21,9 @@ export const navbarData = [
     Icon: DescriptionIcon
   },
   {
-    title: "Configurações",
-    path: "config",
+    title: "Cardápio RUs",
+    path: "menu",
     roles: ["admin"],
-    Icon: BuildIcon
+    Icon: LocalDiningIcon
   }
 ];
