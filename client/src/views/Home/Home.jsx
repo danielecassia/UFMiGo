@@ -1,13 +1,9 @@
-import React from "react";
+import react from 'react';
 
-import "./Home.css"
-
-function Home() {
+export function Home() {
     return (
         <div className="outlet">
-            <h1>this is the homepage</h1>
+            <h1>OIIII 2</h1>
         </div>
     );
 }
-
-export default Home;
