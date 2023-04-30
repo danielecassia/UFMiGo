@@ -1,36 +1,28 @@
-import * as React from 'react';
-import { MenuTemplate } from './MenuTemplate';
-import { Typography } from '@mui/material';
-
-
+import react from 'react';
+import Image from "mui-image";
+import Duck from '../../assets/badDuck.gif'
+import { Typography, Toolbar } from '@mui/material';
 export function Menu() {
-  return (
-    <div>
-        <Typography variant="h5" color='secondary'>
-            Cardápios relacionados ao dia 03 e 04 de Maio de 2023
-        </Typography>
-        <div
-            style={{display:'flex', flexDirection:'row', marginTop:'20px', justifyContent:'center'}}>
-            <MenuTemplate
-                title="Hoje"
-                subheader='RestauranteS Universitário 1'
+    return (
+        <div className="outlet">
+            <Image
+                src={Duck}
+                duration={0}
+                style={{
+                    width: 500,
+                    height: 500,
+                    marginBottom: 16
+                }}
             />
-            <MenuTemplate
-                title="Amanhã"
-                subheader='RestauranteS Universitário 1'
-            />
+            
+            <Typography variant="h3" color='secondary' align='center'>
+                OPSS!!
+            </Typography>
+            <Typography variant="h5" color='primary'align='center'>
+                Desculpe! Página em construção.
+            </Typography>
+            <Toolbar/>
+            
         </div>
-        <div
-            style={{display:'flex', flexDirection:'row', marginTop:'20px', justifyContent:'center'}}>
-            <MenuTemplate
-                title="Hoje"
-                subheader='RestauranteS Universitário 2'
-            />
-            <MenuTemplate
-                title="Amanhã"
-                subheader='RestauranteS Universitário 2'
-            />
-        </div>
-    </div>
-  );
+    );
 }

@@ -33,11 +33,9 @@ export function SideBar() {
 
 
   return (
-    <Container
+    <Box
       sx={{
-        display: "flex",
-        height: "100vh",
-        width:1,
+        display:'flex'
       }}
     >
       <AppBar
@@ -117,13 +115,13 @@ export function SideBar() {
       <Box
         component="main"
         sx={{
-          // flexGrow: 1,
+          flexGrow: 1,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          minHeight: "92%",
-          // bgcolor:'red',
-          width:1,
+          // minHeight: "92%",
+          // p: 3,
           marginTop: 6,
-          paddingY: 2
+          height:"100vh",
+          p: 3
         }}
       >
         <Paper
@@ -132,7 +130,7 @@ export function SideBar() {
           <Outlet />
         </Paper>
       </Box>
-    </Container>
+    </Box>
   );
 
 }
