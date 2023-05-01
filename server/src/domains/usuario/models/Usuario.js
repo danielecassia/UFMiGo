@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Usuario = new Schema({
+const usuarioSchema = new Schema({
     nome: String,
     turmas: [{
         nome: String,
         codigo: String,
-        turma: String,
-        cargaHoraria: Number,
-        horario: {dia: String, hora: String},
+        turma: [String],
+        horaInicial: String,
+        horaFinal: String,
+        diaSemana: String,
+        sala: String,
         faltas: {
             type: Number,
             default: 0
@@ -18,4 +20,6 @@ const Usuario = new Schema({
 
 // NOTE: methods must be added to the schema before compiling it with model()
 
-model('usuarios', Usuario);
+const Usuario = mongoose.model('usuarios', usuarioSchema);
+
+module.exports.Usuario = Usuario;

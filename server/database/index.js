@@ -3,13 +3,13 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-main().catch(err => console.log(err));
+const uri = process.env.DB_URI;
 
-async function main() {
-    const uri = process.env.DB_URI;
-    await mongoose.connect(uri, 
-    { useNewUrlParser: true, useUnifiedTopology: true });    
-    console.log("Connected to mongodb!")
-}
+mongoose.Promise = global.Promisse;
+mongoose.connect(uri, 
+{ useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+    console.log("Conectado ao mongo")
+}).catch((err) => {
+    console.log("Erro ao se conectar: "+err)
+});
 
-module.exports = main;

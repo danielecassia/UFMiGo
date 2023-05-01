@@ -2,18 +2,41 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//import { Schema, model } from 'mongoose';
-
-const Turma = new Schema({
-    nome: String,
-    codigo: String,
-    turma: String,
-    cargaHoraria: Number,
-    horario: {dia: String, hora: String},
+const turmaSchema = new Schema({
+    nome: {
+        type: String, 
+        require: true
+    },
+    codigo: {
+        type: String, 
+        require: true
+    },
+    turma: {
+        type: [String], 
+        require: true
+    },
+    horaInicial: {
+        type: String, 
+        require: true
+    },
+    horaFinal: {
+        type: String, 
+        require: true
+    },
+    diaSemana: {
+        type: String, 
+        require: true
+    },
+    sala: {
+        type: String, 
+        require: true
+    },
     faltas: {
         type: Number, 
-        default: 0
+        require: false
     }
 });
 
-mongoose.model("turmas", Turma);
+const Turma = mongoose.model("turmas", turmaSchema);
+
+module.exports.Turma = Turma;
