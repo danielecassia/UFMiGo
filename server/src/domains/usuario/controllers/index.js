@@ -76,6 +76,4 @@ router.delete('/turmas/deletarFaltas', (req, res) => {
     });
 });
 
-
 module.exports = router;
-Footer
