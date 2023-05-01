@@ -17,10 +17,10 @@ router.get('/turmas', (req, res) => {
 });
 
 // Rota que retorna todos os dados de uma turma dado um id
-router.get('/dadosTurma', (req, res) => {
-    const id = req.params.id
+router.get('/dadosTurma/:id', (req, res) => {
+    const id = req.params.id //req.body.id ?
 
-    usuario.getDadosTurma(id).then(turmas => {
+    usuario.getDadosTurma(req.params.id).then(turmas => {
         res.send(turmas);
     }).catch((err) => {
         res.send(err)
@@ -34,18 +34,16 @@ router.get('/turmas/cadastrar', (req, res) => {
 
 // Rota para criação de novas turmas
 router.post('/turmas/nova', (req, res) => {
-    var id = req.params.id
-
-    usuario.addTurma(id).then(() => {
+    usuario.addTurma(req.body.id, req.body.faltas).then(() => {
         console.log("Turma cadastrada com sucesso!")
     }).catch((err) => {
-        console.log("Erro ao cadastrar turma"+err)
+        console.log("Erro ao cadastrar turma. " + err)
     });
 });
 
 // Rota para deletar turmas de usuario
-router.delete('/turmas/delete', (req, res) => {
-    const id = "req.params.id" // req.body.id ?
+router.delete('/turmas/delete/:id', (req, res) => {
+    const id = req.params.id // req.body.id ?
     usuario.deleteTurma(id).then(() => {
         console.log("Turma deleteda com sucesso!")
     }).catch((err) => {

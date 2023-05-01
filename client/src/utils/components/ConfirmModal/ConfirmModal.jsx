@@ -6,7 +6,7 @@ import {
   Button,
   Modal,
 } from '@mui/material';
-import { Divider } from '../Divider/Divider/Divider.jsx';
+import { Divider } from '../Divider/Divider.jsx';
 
 
 export function ConfirmModal({ open, onClose, onDelete, title, content, confirm }) {
@@ -23,8 +23,10 @@ export function ConfirmModal({ open, onClose, onDelete, title, content, confirm 
         <span className={styles.content}>{content}</span>
         <Divider />
         <div className={styles.button_container}>
-          <Button className={styles.button} sx={{ fontWeight: 600 }} variant='outlined' type="button" color='primary' onClick={onClose}>Cancelar</Button>
-          <Button className={styles.button} sx={{ fontWeight: 600 }} variant='contained' type="button" color="error" onClick={onDelete}>{confirm || 'Excluir'} </Button>
+          <Button className={styles.button} sx={{ fontWeight: 600 }}
+            variant='outlined' type="button" color='primary' onClick={onClose}>Cancelar</Button>
+          <Button className={styles.button} sx={{ fontWeight: 600 }}
+            variant='contained' type="button" color="error" onClick={onDelete}>{confirm || 'Excluir'} </Button>
         </div>
       </Box>
     </Modal>

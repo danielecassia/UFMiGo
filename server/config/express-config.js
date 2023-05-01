@@ -1,8 +1,19 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 
 const turmaRouter = require('../src/domains/turma/controllers/index');
 const userRouter = require('../src/domains/usuario/controllers/index');
+
+const cors = require('cors');
+app.use(cors(
+  {
+    origin: [process.env.APP_URL, process.env.APP_URL_WWW],
+    credentials: true,
+  },
+));
+
+app.use(express.json());
 
 app.use('/', userRouter);
 app.use('/turmas', userRouter);
