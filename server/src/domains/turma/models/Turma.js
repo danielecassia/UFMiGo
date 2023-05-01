@@ -15,15 +15,15 @@ const turmaSchema = new Schema({
         type: [String], 
         require: true
     },
-    horaInicial: {
+    inicio: {
         type: String, 
         require: true
     },
-    horaFinal: {
+    fim: {
         type: String, 
         require: true
     },
-    diaSemana: {
+    dias: {
         type: String, 
         require: true
     },

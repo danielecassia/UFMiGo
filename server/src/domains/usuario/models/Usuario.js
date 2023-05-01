@@ -7,9 +7,9 @@ const usuarioSchema = new Schema({
         nome: String,
         codigo: String,
         turma: [String],
-        horaInicial: String,
-        horaFinal: String,
-        diaSemana: String,
+        inicio: String,
+        fim: String,
+        dias: String,
         sala: String,
         faltas: {
             type: Number,
