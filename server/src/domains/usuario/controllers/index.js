@@ -18,7 +18,7 @@ router.get('/turmas', (req, res) => {
 
 // Rota que retorna todos os dados de uma turma dado um id
 router.get('/dadosTurma', (req, res) => {
-    const id = "644f1aa56fe10ba707065344" //req.body.id ?
+    const id = req.params.id
 
     usuario.getDadosTurma(id).then(turmas => {
         res.send(turmas);
@@ -34,25 +34,18 @@ router.get('/turmas/cadastrar', (req, res) => {
 
 // Rota para criação de novas turmas
 router.post('/turmas/nova', (req, res) => {
-    var id = "645006044f63ca527c1829c9" //req.body.id ?
+    var id = req.params.id
 
-    let faltas 
-    try {
-        faltas = 3 //req.body.faltas ?
-    } catch {
-        faltas = 0
-    }
-
-    usuario.addTurma(id, faltas).then(() => {
+    usuario.addTurma(id).then(() => {
         console.log("Turma cadastrada com sucesso!")
     }).catch((err) => {
-        console.log("Erro ao cadastrar turma. "+err)
+        console.log("Erro ao cadastrar turma"+err)
     });
 });
 
 // Rota para deletar turmas de usuario
 router.delete('/turmas/delete', (req, res) => {
-    const id = "644f1aa56fe10ba707065344" // req.body.id ?
+    const id = "req.params.id" // req.body.id ?
     usuario.deleteTurma(id).then(() => {
         console.log("Turma deleteda com sucesso!")
     }).catch((err) => {
@@ -60,4 +53,31 @@ router.delete('/turmas/delete', (req, res) => {
     });
 });
 
+
+// Rota para adicionar faltas
+router.post('/turmas/adicionarFaltas', (req, res) => {
+    var id = req.params.id
+    const numFaltas = req.params.falta
+
+    usuario.addFaltas(id, numFaltas).then(() => {
+        console.log("Falta cadastrada com sucesso!")
+    }).catch((err) => {
+        console.log("Erro ao atualizar o número de faltas: "+err)
+    });
+});
+
+// Rota para deletar faltas
+router.delete('/turmas/deletarFaltas', (req, res) => {
+    const id = req.params.id
+    const numFaltas = req.params.falta
+
+    usuario.deleteFaltas(id, numFaltas).then(() => {
+        console.log("Falta retirada com sucesso!")
+    }).catch((err) => {
+        console.log("Erro ao atualizar o número de faltas: "+err)
+    });
+});
+
+
 module.exports = router;
+Footer
