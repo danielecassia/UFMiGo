@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     res.send("Página principal do painel usuario")
 });
 
-// Rota para tela que listará todas as turmas do usuário
+// Rota que retorna lista com TODAS as turmas do USUARIO
 router.get('/turmas', (req, res) => {
     usuario.getTurmas().then(turmas => {
         res.send(turmas);
@@ -16,23 +16,41 @@ router.get('/turmas', (req, res) => {
     });
 });
 
+// Rota que retorna todos os dados de uma turma dado um id
+router.get('/dadosTurma', (req, res) => {
+    const id = "644f1aa56fe10ba707065344" //req.body.id ?
+
+    usuario.getDadosTurma(id).then(turmas => {
+        res.send(turmas);
+    }).catch((err) => {
+        res.send(err)
+    });
+});
+
 // Rota para tela de cadastro de turmas
 router.get('/turmas/cadastrar', (req, res) => {
-    res.send("Página de cadastro de turmas")
+    res.send("Página de cadastro de turmas");
 });
 
 // Rota para criação de novas turmas
 router.post('/turmas/nova', (req, res) => {
-    var novaTurma = {
-        codigo: "DCC603".toUpperCase(), //req.body.codigo.toUpperCase()
-        turma: "TN".toUpperCase() //req.body.turma.toUpperCase()
-    };
+    var id = "644f1aa56fe10ba707065344" //req.body.id ?
 
-    usuario.addTurma(novaTurma).then(() => {
+    usuario.addTurma(id).then(() => {
         console.log("Turma cadastrada com sucesso!")
     }).catch((err) => {
         console.log("Erro ao cadastrar turma"+err)
     });
-})
+});
+
+// Rota para deletar turmas de usuario
+router.delete('/turmas/delete', (req, res) => {
+    const id = "644f1aa56fe10ba707065344" // req.body.id ?
+    usuario.deleteTurma(id).then(() => {
+        console.log("Turma deleteda com sucesso!")
+    }).catch((err) => {
+        console.log(err)
+    });
+});
 
 module.exports = router;

@@ -8,6 +8,11 @@ app.use('/', userRouter);
 app.use('/turmas', userRouter);
 app.use('/turmas/cadastrar', userRouter);
 app.use('/turmas/nova', userRouter);
+app.use('dadosTurma', userRouter);
+app.use('/turmas/delete', userRouter);
+
+app.use('/', turmaRouter);
+app.use('/materias', turmaRouter);
 
 const PORT = 3000;
 app.listen(PORT, console.log("Server is running on port 3000"));
