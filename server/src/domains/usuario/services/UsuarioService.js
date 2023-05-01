@@ -45,20 +45,18 @@ async function getTurmas() {
 };
 
 async function getDadosTurma(id) {
-    getTurmas().then(turmas => {
-        for (i = 0; i < turmas.length; i++) {
-            if (turmas[i]._id == id) {
-                return turmas
-            }
+    const turmas = await getTurmas();
+    
+    for (i = 0; i < turmas.length; i++) {
+        if (turmas[i]._id == id) {
+            return turmas[i]
         }
-    }).catch((err) => {
-        console.log(err)
-    })
+    };
 };
 
 // Função que deleta uma turma do usuário dado um id
 async function deleteTurma(id) {
-    Usuario.updateOne({ 
+    await Usuario.updateOne({ 
         nome: "Usuário Padrão"},
         { $pull: { turmas: {_id: id}  } }, 
     ).then(() => {

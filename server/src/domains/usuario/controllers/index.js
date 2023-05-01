@@ -20,16 +20,16 @@ router.get('/turmas', (req, res) => {
 router.get('/dadosTurma', (req, res) => {
     const id = "644f1aa56fe10ba707065344" //req.body.id ?
 
-    usuario.getTurmas().then(turmas => {
+    usuario.getDadosTurma(id).then(turmas => {
         res.send(turmas);
     }).catch((err) => {
         res.send(err)
     });
-})
+});
 
 // Rota para tela de cadastro de turmas
 router.get('/turmas/cadastrar', (req, res) => {
-    res.send("Página de cadastro de turmas")
+    res.send("Página de cadastro de turmas");
 });
 
 // Rota para criação de novas turmas
@@ -41,16 +41,16 @@ router.post('/turmas/nova', (req, res) => {
     }).catch((err) => {
         console.log("Erro ao cadastrar turma"+err)
     });
-})
+});
 
 // Rota para deletar turmas de usuario
 router.delete('/turmas/delete', (req, res) => {
-    const id = "644f1aa56fe10ba707065344" // req.body.id
+    const id = "644f1aa56fe10ba707065344" // req.body.id ?
     usuario.deleteTurma(id).then(() => {
         console.log("Turma deleteda com sucesso!")
     }).catch((err) => {
         console.log(err)
-    })
-})
+    });
+});
 
 module.exports = router;
