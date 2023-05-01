@@ -8,6 +8,5 @@ export async function listCoursebyUsuer() {
     codigo: courseChip.codigo,
     nome: courseChip.nome,
     faltas: courseChip.faltas,
-
   }));
 }

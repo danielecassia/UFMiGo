@@ -1,4 +1,4 @@
-import react from 'react';
+import * as React from 'react';
 import {
     Container,
     Toolbar,
@@ -9,22 +9,60 @@ import {
     TextField
 } from '@mui/material';
 import {
-    AddCircleOutline as AddCircleOutlineIcon, 
+    AddCircleOutline as AddCircleOutlineIcon,
     Close as CloseIcon,
     Delete as DeleteIcon
 } from '@mui/icons-material';
-import {CustomLabel} from '../../utils/components/CustomLabel/CustomLabel.jsx';
-import {FormSection} from '../../utils/components/FormSection/FormSection.jsx';
+import { WaitingFetchCircle } from '../../utils/components/WaitingFetchCircle/WaitingFetchCircle';
+import { FormSection } from '../../utils/components/FormSection/FormSection.jsx';
 import styles from './styles.module.scss';
+import { useNavigate, useParams } from 'react-router-dom';
+import { deleteCourse } from '../../utils/requests/Courses/deleteCourse.jsx';
+import { CourseDataById } from '../../utils/requests/Courses/CourseDataById.jsx';
+import { ConfirmModal } from '../../utils/components/ConfirmModal/ConfirmModal';
 
 export function CourseProfile() {
-const {palette}= useTheme();
+    const { id } = useParams();
+    const { navigate } = useNavigate();
+    const { palette } = useTheme();
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const [courseData, setCourseData] = React.useState({ codigo: "default" });
+
+    React.useEffect(() => {
+        const fetch = async () => {
+            try {
+                if (!id)
+                    throw new Error("Não foi possível pegar os dados dessa matéria");
+                const courseDataBack = await CourseDataById(id);
+                console.log("courseDataBack");
+                console.log(courseDataBack);
+                setCourseData(courseDataBack);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        fetch();
+    }, []);
+
+    async function confirmDelete() {
+        try {
+            if (!id)
+                throw new Error("Não foi possível deletar a matéria");
+            await deleteCourse(id);
+            navigate(-1);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    if (courseData.codigo === "default") { return <WaitingFetchCircle /> }
     return (
-        <div className="outlet" style={{marginTop:'30px'}}>
+        <div className="outlet" style={{ marginTop: '30px' }}>
             <Container maxWidth="lg">
                 <div className={styles.divButtomHeader}>
                     <Button variant="contained" color="secondary"
-                        onClick={() => alert("DELETAR MATÉRIA")}
+                        onClick={() => setModalOpen(true)}
                         startIcon={
                             <DeleteIcon />}> Deletar Matéria
                     </Button>
@@ -38,63 +76,62 @@ const {palette}= useTheme();
                         height: "200%",
                     },
                 }}>
-                    <Paper variant="outlined"style={{
+                    <Paper variant="outlined" style={{
                         borderRadius: 10,
                         padding: 20,
                         marginBottom: 70
                     }}>
-                        <FormSection title="Nome da Matéria">
+                        <FormSection title={courseData.nome}>
                             <TextField
                                 id="standard-required"
                                 label="Código"
-                                defaultValue="DCC024"
+                                defaultValue={courseData.codigo}
                                 variant="standard"
-                                // color="secondary"
-                                sx={{label: {color:palette.primary.main} }}
-                                InputProps={{readOnly: true}}
+                                sx={{ label: { color: palette.primary.main } }}
+                                InputProps={{ readOnly: true }}
                             />
                             <TextField
                                 id="standard-required"
                                 label="Turma"
-                                defaultValue="TN1"
+                                defaultValue={courseData.turma}
                                 variant="standard"
-                                sx={{label: {color:palette.primary.main} }}
-                                InputProps={{readOnly: true}}
+                                sx={{ label: { color: palette.primary.main } }}
+                                InputProps={{ readOnly: true }}
                             />
                             <TextField
                                 id="standard-required"
                                 label="Horário"
-                                defaultValue="19:00"
+                                defaultValue={courseData.inicio}
                                 variant="standard"
-                                sx={{label: {color:palette.primary.main} }}
-                                InputProps={{readOnly: true}}
+                                sx={{ label: { color: palette.primary.main } }}
+                                InputProps={{ readOnly: true }}
                             />
                             <TextField
                                 id="standard-required"
                                 label="Dias"
-                                defaultValue="Ter e Quin"
+                                defaultValue={courseData.dias}
                                 variant="standard"
-                                sx={{label: {color:palette.primary.main} }}
-                                InputProps={{readOnly: true}}
+                                sx={{ label: { color: palette.primary.main } }}
+                                InputProps={{ readOnly: true }}
                             />
                             <TextField
                                 id="standard-required"
                                 label="Sala"
-                                defaultValue="ICEX 2008"
+                                defaultValue={courseData.sala}
                                 variant="standard"
-                                sx={{label: {color:palette.primary.main} }}
-                                InputProps={{readOnly: true}}
+                                sx={{ label: { color: palette.primary.main } }}
+                                InputProps={{ readOnly: true }}
                             />
                             <TextField
                                 id="standard-required"
                                 label="Total de Faltas"
-                                defaultValue="4"
+                                defaultValue={courseData.faltas}
                                 variant="standard"
-                                sx={{label: {color:palette.primary.main} }}
-                                InputProps={{readOnly: true}}
+                                sx={{ label: { color: palette.primary.main } }}
+                                InputProps={{ readOnly: true }}
                             />
                         </FormSection>
-                        <br/><br/>
+                        <br /><br />
                         <FormSection title="Gerenciar Faltas">
                             <div className={styles.faltasGroup}>
                                 <TextField
@@ -103,25 +140,32 @@ const {palette}= useTheme();
                                     defaultValue="0"
                                     type='number'
                                     variant="standard"
-                                    sx={{label: {color:palette.primary.main} }}
+                                    sx={{ label: { color: palette.primary.main } }}
                                 />
                                 <Button variant="outlined" color="secondary"
                                     onClick={() => alert("EXCLUIR FALTAS")}
                                     startIcon={
                                         <CloseIcon sx={{ color: palette.secondary.main }}
-                                    />}>
+                                        />}>
                                     Excluir Faltas</Button>
                                 <Button variant="outlined" color="primary"
                                     onClick={() => alert("ADICIONAR FALTAS")}
                                     startIcon={
                                         <AddCircleOutlineIcon sx={{ color: palette.primary.main }}
-                                    />}>
+                                        />}>
                                     Adicionar Faltas </Button>
                             </div>
                         </FormSection>
+                        <ConfirmModal
+                            open={modalOpen}
+                            onClose={() => setModalOpen(false)}
+                            title="Excluir Matéria"
+                            content="Tem certeza que deseja excluir a matéria?"
+                            onDelete={confirmDelete}
+                        />
                     </Paper>
                 </Box>
-            </Container>
-        </div>
+            </Container >
+        </div >
     );
 }

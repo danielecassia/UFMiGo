@@ -7,14 +7,16 @@ import { FormSection } from '../../utils/components/FormSection/FormSection.jsx'
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
 import { listCoursesICEx } from '../../utils/requests/Courses/listCoursesICEx';
-import { postMateria } from '../../utils/requests/Courses/postMateria';
+import { postCourse } from '../../utils/requests/Courses/postCourse.jsx';
 
 export function CourseRegister() {
   const navigate = useNavigate();
   const [courseNamesICEx, setCourseNamesICEx] = React.useState([]);
   const [coursesICEx, setCoursesICEx] = React.useState([]);
   const [courseClassesICEx, setCourseClassesICEx] = React.useState([]);
-  const [idCourseChosen, setIdCourseChosen] = React.useState(undefined);
+  const [turmaChosen, setTurmaChosen] = React.useState(null);
+  const [faltas, setFaltas] = React.useState(0);
+  const updatBody = (value) => setBody({ ...setBody, ...value });
 
   React.useEffect(() => {
     const fetch = async () => {
@@ -34,19 +36,27 @@ export function CourseRegister() {
   }, []);
 
   function handleChoseMateria(value) {
-    console.log(`Filtra ai ${value}`);
     setCourseClassesICEx(coursesICEx.filter(c => c.nome === value));
-    console.log(coursesICEx.filter(c => c.nome === value));
+    setTurmaChosen(null);
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!idCourseChosen) {
+    if (!turmaChosen) {
       alert("Escolha uma turma!");
       return
     }
-    postMateria(idCourseChosen);
-    navigate(-1);
+    let body = {
+      id: turmaChosen.id,
+      faltas: faltas
+    };
+    try {
+      console.log(body);
+      postCourse(body);
+      navigate(-1);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -74,11 +84,12 @@ export function CourseRegister() {
           <Autocomplete
             className={styles.fieldSetSelect}
             disableClearable
-            id="horario"
+            id="turma"
             size="small"
             options={courseClassesICEx.map(c => ({ id: c.id, label: c.turma }))}
-            // value={chosenChips}
-            onChange={(_, value) => setIdCourseChosen(value.id)}
+            isOptionEqualToValue={(op, val) => op.id === val.id}
+            onChange={(_, value) => setTurmaChosen(value)}
+            value={turmaChosen}
             noOptionsText="Nenhum Escolhido"
             ChipProps={{ color: 'primary' }}
             renderInput={(params) => <TextField {...params} label="Turma" />}
@@ -91,6 +102,8 @@ export function CourseRegister() {
         <CustomLabel>Adicione o número de faltas inicial (opicional)</CustomLabel>
         <TextField type='number' size="small"
           id="outlined-basic" label="Faltas"
+          onChange={(e) => setFaltas(Number(e.target.value))}
+
           variant="outlined" />
         <div className={styles.formGroup}>
           <Button

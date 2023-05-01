@@ -1,7 +1,6 @@
 import React from 'react'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import "./PageHeader.scss";
 import ConfirmModal from '../../components/ConfirmModal/ConfirmModal';
 
@@ -34,10 +33,10 @@ export default function PageHeader({ title, buttons }) {
             {item.small ?
               // <DeleteIcon/>
               <ConfirmModal
-              open={modalOpen}
-              onClose={() => setModalOpen(false)}
-              title="Excluir Matéria"
-              content="Tem certeza que deseja excluir a matéria xxxx?"
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+                title="Excluir Matéria"
+                content="Tem certeza que deseja excluir a matéria?"
               />
 
               : item.label}
