@@ -7,4 +7,13 @@ router.get('/', (req, res) => {
     res.send("Página principal do painel turmas")
 });
 
+// Rota que retorna uma lista contendo o ID, NOME e TURMA de todas as materias do DCC
+router.get('/materias', (req, res) => {
+    turma.getMaterias().then(turmas => {
+        res.send(turmas);
+    }).catch((err) => {
+        res.send(err)
+    });
+});
+
 module.exports = router;
