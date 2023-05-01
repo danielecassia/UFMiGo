@@ -34,12 +34,19 @@ router.get('/turmas/cadastrar', (req, res) => {
 
 // Rota para criação de novas turmas
 router.post('/turmas/nova', (req, res) => {
-    var id = "644f1aa56fe10ba707065344" //req.body.id ?
+    var id = "645006044f63ca527c1829c9" //req.body.id ?
 
-    usuario.addTurma(id).then(() => {
+    let faltas 
+    try {
+        faltas = 3 //req.body.faltas ?
+    } catch {
+        faltas = 0
+    }
+
+    usuario.addTurma(id, faltas).then(() => {
         console.log("Turma cadastrada com sucesso!")
     }).catch((err) => {
-        console.log("Erro ao cadastrar turma"+err)
+        console.log("Erro ao cadastrar turma. "+err)
     });
 });
 
