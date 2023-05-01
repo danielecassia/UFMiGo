@@ -10,6 +10,9 @@ app.use('/turmas/cadastrar', userRouter);
 app.use('/turmas/nova', userRouter);
 app.use('dadosTurma', userRouter);
 app.use('/turmas/delete', userRouter);
+app.use('/turmas/adicionarFaltas', userRouter);
+app.use('/turmas/deletarFaltas', userRouter);
+
 
 app.use('/', turmaRouter);
 app.use('/materias', turmaRouter);
