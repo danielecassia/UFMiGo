@@ -1,6 +1,7 @@
 # Database construction
 data.json
 uploadTurmas.js
+*.py
 
 # Logs
 logs
