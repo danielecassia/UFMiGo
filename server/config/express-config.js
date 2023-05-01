@@ -13,6 +13,8 @@ app.use(cors(
   },
 ));
 
+app.use(express.json());
+
 app.use('/', userRouter);
 app.use('/turmas', userRouter);
 app.use('/turmas/cadastrar', userRouter);
