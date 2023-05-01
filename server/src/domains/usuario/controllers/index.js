@@ -34,7 +34,6 @@ router.get('/turmas/cadastrar', (req, res) => {
 
 // Rota para criação de novas turmas
 router.post('/turmas/nova', (req, res) => {
-    console.log(req.body);
     usuario.addTurma(req.body.id, req.body.faltas).then(() => {
         console.log("Turma cadastrada com sucesso!")
     }).catch((err) => {
