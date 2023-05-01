@@ -32,18 +32,18 @@ export function CourseRegister() {
               label="Matéria" />}
           />
         </Stack>
-        <CustomLabel>Selecione o horário da aula</CustomLabel>
+        <CustomLabel>Selecione a sua turma</CustomLabel>
         <Stack spacing={3} sx={{ flex: 1 }}>
           <Autocomplete
           className={styles.fieldSetSelect}
           disableClearable
           id="horario"
           size="small"
-          options={courses.map(c=>({label:c.inicio}))}
+          options={courses.map(c=>({label:c.turma}))}
           // value={chosenChips}
           noOptionsText="Nenhum Escolhido"
           ChipProps={{ color: 'primary' }}
-          renderInput={(params) => <TextField {...params} label="Horário" />}
+          renderInput={(params) => <TextField {...params} label="Turma" />}
           />
         </Stack>
       </FormSection>

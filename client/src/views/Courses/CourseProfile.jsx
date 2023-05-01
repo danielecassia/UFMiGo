@@ -79,6 +79,14 @@ const {palette}= useTheme();
                             />
                             <TextField
                                 id="standard-required"
+                                label="Sala"
+                                defaultValue="ICEX 2008"
+                                variant="standard"
+                                sx={{label: {color:palette.primary.main} }}
+                                InputProps={{readOnly: true}}
+                            />
+                            <TextField
+                                id="standard-required"
                                 label="Total de Faltas"
                                 defaultValue="4"
                                 variant="standard"
