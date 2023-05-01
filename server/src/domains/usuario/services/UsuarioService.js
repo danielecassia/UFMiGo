@@ -3,9 +3,9 @@ const Turma = require('../../turma/models/Turma').Turma;
 const Usuario = require('../models/Usuario').Usuario;
 
 // Função que adiciona uma turma à lista de turmas do Usuario
-async function addTurma( id ) {
+async function addTurma(id, faltas) {
     // Verifica se turma existe na coleção de Turmas
-    var novaTurma = await Turma.find({ _id: id }).exec();
+    var novaTurma = await Turma.findOne({ _id: id }).exec();
     
     if (novaTurma == null) {
         throw new Error('Turma informada não existe!');
@@ -19,9 +19,11 @@ async function addTurma( id ) {
     
     if (turmaUser != null) {
         throw new Error('Turma já cadastrada pelo usuário!');
-    }
+    };
     
     // Adiciona a turma à lista de turmas do usuário
+    novaTurma.set({ "faltas": faltas });
+
     await Usuario.updateOne(
         { nome: "Usuário Padrão" },
         { $push: { turmas: novaTurma } }, 

@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import {StyledDataGrid} from '../../utils/components/StyledDataGrid/StyledDataGrid';
 import { InfoButton } from '../../utils/components/Buttons/InfoButton';
+import {listCoursebyUsuer} from '../../utils/requests/Courses/listCoursebyUsuer';
 
 const columns = [
   {
@@ -13,7 +14,7 @@ const columns = [
     flex: 1,
   },
   {
-    field: 'course',
+    field: 'nome',
     headerName: 'Matéria',
     flex: 2,
   },
@@ -28,20 +29,23 @@ const columns = [
   },
 ];
 
-const rows = [
-    {id:1, codigo: 'DCC024', course:'Linguagem de Programação', faltas:11},
-    {id:2, codigo: 'DCC024', course:'Linguagem de Programação', faltas:11},
-    {id:3, codigo: 'DCC024', course:'Linguagem de Programação', faltas:11},
-    {id:4, codigo: 'DCC024', course:'Linguagem de Programação', faltas:11},
-    {id:5, codigo: 'DCC024', course:'Linguagem de Programação', faltas:11},
-    {id:6, codigo: 'DCC024', course:'Linguagem de Programação', faltas:11},
-    {id:7, codigo: 'DCC024', course:'Linguagem de Programação', faltas:11},
-    {id:8, codigo: 'DCC024', course:'Linguagem de Programação', faltas:11},
-    {id:9, codigo: 'DCC024', course:'Linguagem de Programação', faltas:11},
-];
-
 export function Courses() {
   const navigate = useNavigate();
+  const [rows, setRows] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetch = async () => {
+      try {
+        const rowsBack = await listCoursebyUsuer();
+        setRows(rowsBack);
+      } catch (err) {
+        // alertError(err);
+        console.log(err);
+      }
+    };
+    fetch();
+  }, []);
+
   return (
     <div>
         <Stack
