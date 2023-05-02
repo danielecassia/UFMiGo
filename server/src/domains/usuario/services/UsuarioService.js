@@ -68,11 +68,6 @@ async function deleteTurma(id) {
     });
 };
 
-module.exports.addTurma = addTurma;
-module.exports.getTurmas = getTurmas;
-module.exports.deleteTurma = deleteTurma;
-module.exports.getDadosTurma = getDadosTurma;
-
 // Função que adiciona faltas a uma turma
 async function addFaltas(id, numFaltas) {
     const turma = await getDadosTurma(id);
@@ -111,3 +106,8 @@ async function deleteFaltas(id, numFaltas) {
 
 module.exports.addFaltas = addFaltas;
 module.exports.deleteFaltas = deleteFaltas;
+module.exports.addTurma = addTurma;
+module.exports.getTurmas = getTurmas;
+module.exports.deleteTurma = deleteTurma;
+module.exports.getDadosTurma = getDadosTurma;
+
