@@ -53,29 +53,28 @@ router.delete('/turmas/delete/:id', (req, res) => {
 
 
 // Rota para adicionar faltas
-router.post('/turmas/adicionarFaltas', (req, res) => {
+router.put('/turmas/adicionarFaltas/:id', (req, res) => {
     var id = req.params.id
-    const numFaltas = req.params.falta
+    const numFaltas = req.body.falta
 
     usuario.addFaltas(id, numFaltas).then(() => {
         console.log("Falta cadastrada com sucesso!")
     }).catch((err) => {
-        console.log("Erro ao atualizar o número de faltas: "+err)
+        console.log("Erro ao atualizar o número de faltas: " + err)
     });
 });
 
 // Rota para deletar faltas
-router.delete('/turmas/deletarFaltas', (req, res) => {
+router.put('/turmas/deletarFaltas/:id', (req, res) => {
     const id = req.params.id
-    const numFaltas = req.params.falta
+    const numFaltas = req.body.falta
 
     usuario.deleteFaltas(id, numFaltas).then(() => {
         console.log("Falta retirada com sucesso!")
     }).catch((err) => {
-        console.log("Erro ao atualizar o número de faltas: "+err)
+        console.log("Erro ao atualizar o número de faltas: " + err)
     });
 });
 
 
 module.exports = router;
-Footer
