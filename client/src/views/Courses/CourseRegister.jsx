@@ -16,7 +16,6 @@ export function CourseRegister() {
   const [courseClassesICEx, setCourseClassesICEx] = React.useState([]);
   const [turmaChosen, setTurmaChosen] = React.useState(null);
   const [faltas, setFaltas] = React.useState(0);
-  const updatBody = (value) => setBody({ ...setBody, ...value });
 
   React.useEffect(() => {
     const fetch = async () => {
