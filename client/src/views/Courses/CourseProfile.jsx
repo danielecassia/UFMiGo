@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
     Container,
-    Toolbar,
     Box,
     Button,
     Paper,
@@ -20,13 +19,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { deleteCourse } from '../../utils/requests/Courses/deleteCourse.jsx';
 import { CourseDataById } from '../../utils/requests/Courses/CourseDataById.jsx';
 import { ConfirmModal } from '../../utils/components/ConfirmModal/ConfirmModal';
+import { deleteFaltas } from '../../utils/requests/Courses/Faltas/deleteFaltas';
+import { addFaltas } from '../../utils/requests/Courses/Faltas/addFaltas';
 
 export function CourseProfile() {
     const { id } = useParams();
-    const { navigate } = useNavigate();
+    const navigate = useNavigate();
     const { palette } = useTheme();
     const [modalOpen, setModalOpen] = React.useState(false);
     const [courseData, setCourseData] = React.useState({ codigo: "default" });
+    const [updateFaltas, setUpdateFaltas] = React.useState(0);
 
     React.useEffect(() => {
         const fetch = async () => {
@@ -48,10 +50,44 @@ export function CourseProfile() {
         try {
             if (!id)
                 throw new Error("Não foi possível deletar a matéria");
-            await deleteCourse(id);
+            deleteCourse(id);
+            console.log("ACABA PELO AMOR DE DEUSSSSSS")
             navigate(-1);
         }
         catch (err) {
+            console.log(err);
+        }
+    }
+
+    async function adicionaFaltas() {
+        if (!id) {
+            alert("Matéria não encontrada");
+            return
+        }
+        let body = {
+            falta: updateFaltas
+        };
+        try {
+            console.log(body);
+            addFaltas(id, body);
+            navigate(-1);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    async function deletaFaltas() {
+        if (!id) {
+            alert("Matéria não encontrada");
+            return
+        }
+        let body = {
+            falta: updateFaltas
+        };
+        try {
+            console.log(body);
+            deleteFaltas(id, body);
+            navigate(-1);
+        } catch (err) {
             console.log(err);
         }
     }
@@ -140,20 +176,21 @@ export function CourseProfile() {
                                     defaultValue="0"
                                     type='number'
                                     variant="standard"
+                                    onChange={(e) => setUpdateFaltas(Number(e.target.value))}
                                     sx={{ label: { color: palette.primary.main } }}
                                 />
-                                <Button variant="outlined" color="secondary"
-                                    onClick={() => alert("EXCLUIR FALTAS")}
-                                    startIcon={
-                                        <CloseIcon sx={{ color: palette.secondary.main }}
-                                        />}>
-                                    Excluir Faltas</Button>
                                 <Button variant="outlined" color="primary"
-                                    onClick={() => alert("ADICIONAR FALTAS")}
+                                    onClick={() => adicionaFaltas()}
                                     startIcon={
                                         <AddCircleOutlineIcon sx={{ color: palette.primary.main }}
                                         />}>
                                     Adicionar Faltas </Button>
+                                <Button variant="outlined" color="secondary"
+                                    onClick={() => deletaFaltas()}
+                                    startIcon={
+                                        <CloseIcon sx={{ color: palette.secondary.main }}
+                                        />}>
+                                    Excluir Faltas</Button>
                             </div>
                         </FormSection>
                         <ConfirmModal

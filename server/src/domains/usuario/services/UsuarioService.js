@@ -3,7 +3,7 @@ const Turma = require('../../turma/models/Turma').Turma;
 const Usuario = require('../models/Usuario').Usuario;
 
 // Função que adiciona uma turma à lista de turmas do Usuario
-async function addTurma( id ) {
+async function addTurma(id, faltas) {
     // Verifica se turma existe na coleção de Turmas
     var turmaDB = await Turma.findOne({ _id: id }).exec();
 
@@ -16,7 +16,7 @@ async function addTurma( id ) {
         nome: "Usuário Padrão",
         "turmas._id": id,
     }).exec();
-    
+
     // if (turmaUser != null) {
     //     throw new Error('Turma já cadastrada pelo usuário!');
     // };
@@ -74,13 +74,15 @@ async function addFaltas(id, numFaltas) {
     var faltasTotal = turma.faltas + numFaltas;
 
     await Usuario.updateOne(
-        { nome: "Usuário Padrão",
-        "turmas._id": id },
-        { "turmas.$.faltas": faltasTotal }, 
+        {
+            nome: "Usuário Padrão",
+            "turmas._id": id
+        },
+        { "turmas.$.faltas": faltasTotal },
     ).then(() => {
         console.log("Falta cadastrada com sucesso!")
     }).catch((err) => {
-        console.log("Erro ao atualizar o número de faltas: "+err)
+        console.log("Erro ao atualizar o número de faltas: " + err)
     });
 };
 
@@ -89,18 +91,20 @@ async function deleteFaltas(id, numFaltas) {
     const turma = await getDadosTurma(id);
     var faltasTotal = turma.faltas - numFaltas;
 
-    if (faltasTotal<0){
-        faltasTotal=0;
+    if (faltasTotal < 0) {
+        faltasTotal = 0;
     }
-    
+
     await Usuario.updateOne(
-        { nome: "Usuário Padrão",
-        "turmas._id": id },
-        { "turmas.$.faltas": faltasTotal }, 
+        {
+            nome: "Usuário Padrão",
+            "turmas._id": id
+        },
+        { "turmas.$.faltas": faltasTotal },
     ).then(() => {
         console.log("Falta retirada com sucesso!")
     }).catch((err) => {
-        console.log("Erro ao atualizar o número de faltas: "+err)
+        console.log("Erro ao atualizar o número de faltas: " + err)
     });
 };
 
