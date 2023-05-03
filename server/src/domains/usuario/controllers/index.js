@@ -39,6 +39,7 @@ router.post('/turmas/nova', (req, res) => {
     }).catch((err) => {
         console.log("Erro ao cadastrar turma. " + err)
     });
+    res.redirect('/turmas');
 });
 
 // Rota para deletar turmas de usuario
