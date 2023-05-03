@@ -73,6 +73,10 @@ async function addFaltas(id, numFaltas) {
     const turma = await getDadosTurma(id);
     var faltasTotal = turma.faltas + numFaltas;
 
+    if (faltasTotal < 0) {
+        faltasTotal = 0;
+    };
+
     await Usuario.updateOne(
         {
             nome: "Usuário Padrão",
@@ -93,7 +97,7 @@ async function deleteFaltas(id, numFaltas) {
 
     if (faltasTotal < 0) {
         faltasTotal = 0;
-    }
+    };
 
     await Usuario.updateOne(
         {
